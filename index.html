@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css" integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ==" crossorigin="" />
+    <link rel="stylesheet" href="./lib/leaflet.fullscreen.css">
+    <link rel="stylesheet" href="./leaflet/MarkerCluster.css">
+    <link rel="stylesheet" href="./leaflet/MarkerCluster.Default.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+    <title>Document</title>
+</head>
+<body>
+        
+  <!-- <nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+      <a class="navbar-brand" href="#">JEGRAL</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#">AJINGI LGA</a>
+          </li>
+        </ul>
+
+        <div class="d-flex flex-row flex-xs-column">
+          <li class="nav-item dropdown d-flex">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+             WARDS (11)
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item d-flex ">
+            <a class="nav-link" href="#">COMMUNITIES</a>
+          </li>
+
+          <li class="nav-item d-flex">
+            <a class="nav-link disabled">INFRASTRUCTURES</a>
+          </li>
+          <! <button class="btn btn-outline-success" type="submit">Search</button> -->
+        <!-- </div>
+
+      </div>
+    </div>
+  </nav> --> 
+  
+  <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color: black;">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#" style="color: aliceblue;">Navbar</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="#" style="color: aliceblue;">AJINGI LGA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#" style="color: aliceblue;">COMMUNITIES</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: aliceblue;">
+              WARDS (11)
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Action</a></li>
+              <li><a class="dropdown-item" href="#">Another action</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="#">Something else here</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link disabled" style="color: aliceblue;">INFRASTRUCTURES</a>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+  </nav>
+
+    <div id="map">
+        <!-- map coordinate -->
+        <div class="leaflet-control map-coordinate">
+            <div class="coordinate"></div>
+        </div>
+        <div class="leaflet-control zoom-to-layer">
+            <svg xmlns="http://www.w3.org/2000/svg" width="1.6em" height="1.6em" fill="currentColor" class="bi bi-house-door" viewBox="0 0 16 16">
+                <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146ZM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5Z"/>
+              </svg>
+        </div>
+    </div>
+    <!-- <button onclick=fullScreenview()>View in full screen</button>  -->
+<!-- zoom to layer -->
+
+   <!-- <button class="zoom-to-layer">Zoom to Layer</button> -->
+   <footer style="background-color: black; color: aliceblue; text-align: center; margin-top: 1px; padding: 2px;"> <b> &copy;  JEGRAL COMPANY </b> </footer>
+</body>
+</html>
+<!-- JavaScript Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js" integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ==" crossorigin=""></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="./lib/leaflet.browser.print.min.js"></script>
+<script src="./lib/Leaflet.fullscreen.min.js"></script>
+<script src="./leaflet/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+<script src="./test.js"></script>
+<script>
+    // map class initialize
+    var map = L.map('map').setView([11.978837, 9.07074], 12);
+    map.zoomControl.setPosition('topright');
+
+    //adding osm tilelayer
+    var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+}).addTo(map);
+
+var TopoMap = L.tileLayer('https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png', {
+	maxZoom: 17,
+	attribution: 'Map data: &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors, <a href="http://viewfinderpanoramas.org">SRTM</a> | Map style: &copy; <a href="https://opentopomap.org">OpenTopoMap</a> (<a href="https://creativecommons.org/licenses/by-sa/3.0/">CC-BY-SA</a>)'
+});
+
+var OpenStreetMap = L.tileLayer('https://{s}.tile.openstreetmap.fr/osmfr/{z}/{x}/{y}.png', {
+	maxZoom: 20,
+	attribution: '&copy; OpenStreetMap France | &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+});
+
+
+
+//Adding marker in the center of the map
+// L.marker([12.0022, 8.5920]).addTo(map)
+//     .bindPopup('A pretty CSS3 popup.<br> Easily customizable.')
+//     .openPopup();
+
+    // add map scale
+    L.control.scale().addTo(map)
+
+    
+    // Full screen map
+    var mapId = document.getElementById('map');
+    function fullScreenview(){
+        mapId.requestFullscreen();
+    }
+    
+
+  
+// // Create a new map with a fullscreen button:
+// var map = new L.Map('map', {
+//     fullscreenControl: true,
+//     // OR
+//     fullscreenControl: {
+//         pseudoFullscreen: false // if true, fullscreen to page width and height
+//     }
+// });
+
+// or, add to an existing map:
+map.addControl(new L.Control.Fullscreen());
+
+//hospital coordinates
+
+var myIcon = L.icon({
+    iconUrl: './img/hospi.png',
+    iconSize: [8, 8],
+});
+
+var ajingi = L.marker([12.023878,	8.945306], {icon: myIcon}).addTo(map);
+var popup = ajingi.bindPopup('TSEBARAW HEALTH POST')
+popup.addTo(map)
+
+var gaf = L.marker([11.984664,	9.133941], {icon: myIcon}).addTo(map);
+var popup = gaf.bindPopup('GAFASA HEALTH FACILITY')
+popup.addTo(map)
+
+
+L.marker([11.932667,	9.034705], {icon: myIcon}).addTo(map);
+L.marker([11.965551,	8.883223], {icon: myIcon}).addTo(map);
+L.marker([11.935249,	9.057395], {icon: myIcon}).addTo(map);
+L.marker([11.982789,	9.010281], {icon: myIcon}).addTo(map);
+L.marker([11.98969,	8.970633], {icon: myIcon}).addTo(map);
+L.marker([12.007439,	9.006055], {icon: myIcon}).addTo(map);
+L.marker([11.981459,	9.094345], {icon: myIcon}).addTo(map);
+L.marker([11.939791,	9.189713], {icon: myIcon}).addTo(map);
+L.marker([11.943662,	8.936754], {icon: myIcon}).addTo(map);
+L.marker([11.991769,	8.931036], {icon: myIcon}).addTo(map);
+L.marker([11.934353,	8.909344], {icon: myIcon}).addTo(map);
+L.marker([11.966082,	8.916802], {icon: myIcon}).addTo(map);
+L.marker([11.929994,	9.154845], {icon: myIcon}).addTo(map);
+L.marker([11.996642,	9.205927], {icon: myIcon}).addTo(map);
+L.marker([11.993351,	9.171702], {icon: myIcon}).addTo(map);
+L.marker([12.080335,	9.191733], {icon: myIcon}).addTo(map);
+L.marker([11.961631,	9.118111], {icon: myIcon}).addTo(map);
+L.marker([11.936126,	9.112123], {icon: myIcon}).addTo(map);
+L.marker([11.942558,	9.001023], {icon: myIcon}).addTo(map);
+L.marker([12.04367,	8.952683], {icon: myIcon}).addTo(map);
+L.marker([11.969709,	9.041893], {icon: myIcon}).addTo(map);
+L.marker([12.046712,	8.980747], {icon: myIcon}).addTo(map);
+
+
+// market coordinates
+var myIcon2 = L.icon({
+    iconUrl: './img/market.png',
+    iconSize: [12, 12],
+});
+
+L.marker([11.99286,	8.930655], {icon: myIcon2}).addTo(map);
+L.marker([11.99584,	9.165941], {icon: myIcon2}).addTo(map);
+L.marker([12.046327,	8.982184], {icon: myIcon2}).addTo(map);
+L.marker([11.965051,	9.042351], {icon: myIcon2}).addTo(map);
+
+
+// school coordinates
+var myIcon3 = L.icon({
+    iconUrl: './img/school.png',
+    iconSize: [10, 10],
+});
+
+L.marker([11.773241,	8.42661], {icon: myIcon3}).addTo(map);
+L.marker([11.770427,	8.426255], {icon: myIcon3}).addTo(map);
+L.marker([11.77043,	8.426265], {icon: myIcon3}).addTo(map);
+L.marker([11.771897,	8.428145], {icon: myIcon3}).addTo(map);
+L.marker([11.772083,	8.428087], {icon: myIcon3}).addTo(map);
+L.marker([11.771661,	8.429427], {icon: myIcon3}).addTo(map);
+L.marker([11.904727,	7.950103], {icon: myIcon3}).addTo(map);
+L.marker([11.899971,	7.952676], {icon: myIcon3}).addTo(map);
+L.marker([11.669954,	8.259082], {icon: myIcon3}).addTo(map);
+L.marker([11.672569,	8.257694], {icon: myIcon3}).addTo(map);
+L.marker([11.673284,	8.259169], {icon: myIcon3}).addTo(map);
+L.marker([11.663903,	8.26077], {icon: myIcon3}).addTo(map);
+L.marker([11.662256,	8.261082], {icon: myIcon3}).addTo(map);
+L.marker([12.046343,	9.199654], {icon: myIcon3}).addTo(map);
+L.marker([12.000484,	9.221097], {icon: myIcon3}).addTo(map);
+L.marker([12.029206,	9.216218], {icon: myIcon3}).addTo(map);
+L.marker([12.0234,	8.949787], {icon: myIcon3}).addTo(map);
+L.marker([12.023464,	8.9463], {icon: myIcon3}).addTo(map);
+L.marker([12.003023,	8.95405], {icon: myIcon3}).addTo(map);
+L.marker([11.99127,	8.92596], {icon: myIcon3}).addTo(map);
+L.marker([12.00384,	8.942659], {icon: myIcon3}).addTo(map);
+L.marker([11.985734,	9.133472], {icon: myIcon3}).addTo(map);
+L.marker([11.986234,	9.132816], {icon: myIcon3}).addTo(map);
+L.marker([11.933806,	9.029361], {icon: myIcon3}).addTo(map);
+L.marker([11.932335,	9.03382], {icon: myIcon3}).addTo(map);
+L.marker([11.556513,	7.823286], {icon: myIcon3}).addTo(map);
+L.marker([11.544714,	7.825152], {icon: myIcon3}).addTo(map);
+L.marker([11.543895,	7.824829], {icon: myIcon3}).addTo(map);
+L.marker([11.546203,	7.82663], {icon: myIcon3}).addTo(map);
+L.marker([11.546997,	7.82687], {icon: myIcon3}).addTo(map);
+L.marker([11.550073,	7.825493], {icon: myIcon3}).addTo(map);
+L.marker([11.549912,	7.824546], {icon: myIcon3}).addTo(map);
+L.marker([11.547993,	7.824615], {icon: myIcon3}).addTo(map);
+L.marker([11.547993,	7.824615], {icon: myIcon3}).addTo(map);
+L.marker([11.542292,	7.824385], {icon: myIcon3}).addTo(map);
+L.marker([11.542342,	7.824344], {icon: myIcon3}).addTo(map);
+L.marker([11.546281,	7.823168], {icon: myIcon3}).addTo(map);
+
+
+
+  // Map coordinate display
+  map.on('mousemove',function(e){
+        console.log(e)
+        $('.coordinate').html(`Lat: ${e.latlng.lat} Lng: ${e.latlng.lng}`)
+    })
+
+
+    L.control.browserPrint().addTo(map);
+
+
+
+
+//Geojson load
+var marker = L.markerClusterGroup();
+var taji = L.geoJSON(data, {
+    onEachFeature: function (feature, layer) {
+        layer.bindPopup(feature.properties.COMMUNITY)
+    }
+});
+taji.addTo(marker);
+marker.addTo(map)
+
+//Leaflet layer control
+var baseMaps = {
+    'OSM': osm,
+    'Topo Map': TopoMap,
+    'OpenStreetMap': OpenStreetMap
+}
+
+var overlayMaps = {
+    'GeoJSON Markers': marker
+}
+
+L.control.layers(baseMaps, overlayMaps).addTo(map);
+
+//Leaflet search
+L.Control.geocoder().addTo(map);
+
+//zoom to layer
+$('.zoom-to-layer').click(function(){
+    map.setView([12.0022, 8.5920], 10)
+})
+
+    </script>
